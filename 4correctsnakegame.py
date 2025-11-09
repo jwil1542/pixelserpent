@@ -1,7 +1,7 @@
 import pygame as pg
 import sys,random
 pg.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)
-pg.mixer.music.load("jazz.wav") 
+pg.mixer.music.load("background music.wav") 
 pg.mixer.music.play(20,0.0)
 def collide(x1,y1,x2,y2,x3,y3,x4,y4):
     if (x3+x4) > x1 > x3 and (y3+y4) > y1 > y3 or (x3+x4) > x2 >x3 and (y3+y4) > y2 > y3:

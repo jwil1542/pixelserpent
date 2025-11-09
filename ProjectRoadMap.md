@@ -1,10 +1,11 @@
- __To DO LIST__
+ __TO DO LIST__
 
-1. Search for coding example for snake games __DONE__ 
-2. Find the best code and scrap the rest - improving the bugs and errors 
-3. Create a diagram/map of how we want the program to work and what steps should be included in order. __DONE__
-4. Add Background music to Start MENU __DONE__
-5. Add different colors to the game  
-6. Add a timer to the game in the beginning at the start menu 
+1. Search for a coding example for snake games
+2. Find the best code and scrap the rest - improving the bugs and errors (on bigger sizes, especially)
+4. Create a map of how we want the program to work and what steps should be included in order.
+5. Add cute background music to the Start MENU _DONE_
+6. Add better colors to the game
+7. Change font throughout the game
+8. Add a timer to the game 
 
-___IMPROVE IT___
+

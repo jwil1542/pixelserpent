@@ -151,7 +151,7 @@ class Apple:
 class Game:
     def __init__(self, speed, size=1):
         self.screen = pg.display.set_mode(SCREEN_SIZE)
-        pg.display.set_caption('Snake Game')
+        pg.display.set_caption('Pixel Serpent')
         self.clock = pg.time.Clock()
         self.snake = Snake(speed, size)
         self.size = size
@@ -201,7 +201,7 @@ class Game:
             self.screen.fill((35,38,117))
             self.draw_border()
             # outlined Game Over (using the blit helper which uses CookieCrisp)
-            blit_text_outline(self.screen, "Game Over    Score:", 50, 20, 150, inside_color=(255,255,255), outline_color=(0,0,0), center=False)
+            blit_text_outline(self.screen, "Game Over :(    Score:", 50, 20, 150, inside_color=(255,255,255), outline_color=(0,0,0), center=False)
             blit_text_outline(self.screen, str(self.snake.score), 50, 600, 150, inside_color=(255,255,255), outline_color=(0,0,0), center=False)
 
             # Restart button
@@ -273,7 +273,7 @@ class Game:
 class StartMenu:
     def __init__(self):
         self.screen = pg.display.set_mode(SCREEN_SIZE)
-        pg.display.set_caption("Snake Game - Menu")
+        pg.display.set_caption("Pixel Serpent - Menu")
         self.clock = pg.time.Clock()
         self.buttons = []
         self.create_buttons()
@@ -299,7 +299,7 @@ class StartMenu:
 
             self.screen.fill((35,38,117))
             # title using outline helper (centered)
-            blit_text_outline(self.screen, "SNAKE GAME", 80, SCREEN_SIZE[0]//2, 150, inside_color=(255,255,255), outline_color=(0,0,0), center=True)
+            blit_text_outline(self.screen, "PIXEL SERPENT", 80, SCREEN_SIZE[0]//2, 150, inside_color=(255,255,255), outline_color=(0,0,0), center=True)
 
             # draw border decoration
             color = (0,0,0)

@@ -9,12 +9,10 @@ import time
 # -------------------------
 pg.init()
 
-FONT_FILE = "CookieCrisp-L36ly.ttf"   # <- font file must be in same folder as this script
-MUSIC_FILE = "background music.wav"               # change if your music filename differs
+FONT_FILE = "CookieCrisp-L36ly.ttf"   
+MUSIC_FILE = "background music.wav"         
 SCREEN_SIZE = (800, 450)
 
-# -------------------------
-# Helpers: outline text blit
 # -------------------------
 def blit_text_outline(surface, text, size, x, y, inside_color=(255,255,255), outline_color=(0,0,0), center=False):
     """

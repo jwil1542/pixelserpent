@@ -13,7 +13,7 @@ while (timer != 0):
 clock = pygame.time.Clock()
 clock.tick(10)
 pg.mixer.init(22050, -16, 2, 4096)
-pg.mixer.music.load("jazz.wav")
+pg.mixer.music.load("background music.wav")
 pg.mixer.music.play(20, 5.0)
 
 # Load Cute Font
@@ -149,7 +149,8 @@ class game():
             self.screen.blit(txts, (600, 150))
 
             pg.display.update()
-            self.make_button((153, 300, 100, 50), 'Restart', [(255, 255, 255), (150, 150, 150)], action=lambda: restart())
+            self.make_button((153, 300, 100, 50), 'Restart', [(255, 255, 255), (150, 150, 150)], action=lambda: 
+            ())
 
             if self.hover:
                 click = pg.mouse.get_pressed()

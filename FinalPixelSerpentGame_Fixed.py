@@ -3,7 +3,6 @@ import sys
 import random
 
 pg.init()
-pg.mixer.init()
 
 
 # ---------------------------------
@@ -239,11 +238,7 @@ def game_over(screen, clock, score):
 # Run the Game
 # ---------------------------------
 if __name__ == "__main__":
-    pg.mixer.init()
-    pg.mixer.music.load("background music.wav")
-    pg.mixer.music.set_volume(0.5)
-    pg.mixer.music.play(-1)
-
+    pg.init()
     screen = pg.display.set_mode(SCREEN_SIZE)
     pg.display.set_caption("Pixel Serpent")
     clock = pg.time.Clock()

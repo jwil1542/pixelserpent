@@ -249,6 +249,17 @@ class Game:
 
         self.border_tiles = []
         border_color = (0, 0, 0)
+        
+    def update(self):
+    self.snake.move()
+    self.snake.grow_if_needed()
+
+    # Check apple collision
+    head = self.snake.positions[0]
+    if head == self.apple.position:
+        self.snake.length += 1
+        self.score += 1
+        self.apple.randomize_position()
 
         for x in range(0, SCREEN_SIZE[0], 10):
             surf = pg.Surface((10, 10)); surf.fill(border_color)
@@ -256,7 +267,6 @@ class Game:
             surf2 = pg.Surface((10, 10)); surf2.fill(border_color)
             self.border_tiles.append((surf2, (x, SCREEN_SIZE[1] - 10),
                                       pg.Rect(x, SCREEN_SIZE[1] - 10, 10, 10)))
-
         for y in range(0, SCREEN_SIZE[1], 10):
             surf = pg.Surface((10, 10)); surf.fill(border_color)
             self.border_tiles.append((surf, (0, y), pg.Rect(0, y, 10, 10)))

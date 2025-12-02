@@ -201,6 +201,7 @@ def menu(screen, clock):
 # ---------------------------------
 # Game Over Screen
 # ---------------------------------
+
 def game_over(screen, clock, score):
     while True:
         screen.fill((0, 0, 0))
@@ -219,6 +220,27 @@ def game_over(screen, clock, score):
         prompt = small_font.render("Click to return to menu", True, (180, 180, 180))
         prompt_rect = prompt.get_rect(center=(SCREEN_SIZE[0] // 2, 280))
         screen.blit(prompt, prompt_rect)
+
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                pg.quit()
+                sys.exit()
+
+            if event.type == pg.MOUSEBUTTONDOWN:
+                return  # ← FIXED indentation
+
+        pg.display.flip()
+        clock.tick(60)
+
+
+# ---------------------------------
+# Run the Game
+# ---------------------------------
+if __name__ == "__main__":
+    screen = pg.display.set_mode(SCREEN_SIZE)
+    pg.display.set_caption("Snake Game")
+    clock = pg.time.Clock()
+    menu(screen, clock)
 
          for event in pg.event.get():
              if event.type == pg.QUIT:

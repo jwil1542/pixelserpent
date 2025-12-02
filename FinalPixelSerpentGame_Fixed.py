@@ -3,6 +3,8 @@ import sys
 import random
 
 pg.init()
+pg.mixer.init()
+
 
 # ---------------------------------
 # Settings
@@ -168,7 +170,7 @@ def menu(screen, clock):
         title_font = load_font(50)
         btn_font = load_font(32)
 
-        title_surf = title_font.render("SNAKE GAME", True, (255, 255, 255))
+        title_surf = title_font.render("PIXEL SERPENT", True, (255, 255, 255))
         title_rect = title_surf.get_rect(center=(SCREEN_SIZE[0] // 2, 100))
         screen.blit(title_surf, title_rect)
 
@@ -237,10 +239,12 @@ def game_over(screen, clock, score):
 # Run the Game
 # ---------------------------------
 if __name__ == "__main__":
+    pg.mixer.init()
+    pg.mixer.music.load("background music.wav")
+    pg.mixer.music.set_volume(0.5)
+    pg.mixer.music.play(-1)
+
     screen = pg.display.set_mode(SCREEN_SIZE)
-    pg.display.set_caption("Snake Game")
+    pg.display.set_caption("Pixel Serpent")
     clock = pg.time.Clock()
     menu(screen, clock)
-
-         for event in pg.event.get():
-             if event.type == pg.QUIT:

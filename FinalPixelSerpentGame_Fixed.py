@@ -220,6 +220,5 @@ def game_over(screen, clock, score):
         prompt_rect = prompt.get_rect(center=(SCREEN_SIZE[0] // 2, 280))
         screen.blit(prompt, prompt_rect)
 
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-
+         for event in pg.event.get():
+             if event.type == pg.QUIT:

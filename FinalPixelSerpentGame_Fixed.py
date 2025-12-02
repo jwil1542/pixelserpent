@@ -1,4 +1,3 @@
-
 import pygame as pg
 import sys
 import random
@@ -11,8 +10,8 @@ import os
 pg.init()
 
 # --- Visual / asset settings ---
-FONT_FILE = "CookieCrisp-L36ly.ttf"   
-MUSIC_FILE = "background music.wav"   
+FONT_FILE = "CookieCrisp-L36ly.ttf"
+MUSIC_FILE = "background music.wav"
 SCREEN_SIZE = (800, 450)
 
 # -------------------------
@@ -32,7 +31,6 @@ def load_font(size):
 # -------------------------
 def try_play_music():
     if not MUSIC_FILE or not os.path.isfile(MUSIC_FILE):
-        # don't crash if music isn't present
         print("Music file not found (skipping).")
         return
     try:
@@ -50,10 +48,9 @@ def blit_text_outline(surface, text, size, x, y,
                       inside_color=(255,255,255),
                       outline_color=(0,0,0),
                       center=False):
-    """
-    Draw text with an outline on `surface`.
-    """
+
     font = load_font(size)
+
     offsets = [(-2,0),(2,0),(0,-2),(0,2),(-2,-2),(2,-2),(-2,2),(2,2)]
     for dx, dy in offsets:
         surf = font.render(text, True, outline_color)
@@ -70,10 +67,11 @@ def blit_text_outline(surface, text, size, x, y,
         main_rect.center = (x, y)
     else:
         main_rect.topleft = (x, y)
+
     surface.blit(main_surf, main_rect)
 
 # -------------------------
-# Countdown (console) - optional before menu
+# Countdown (console)
 # -------------------------
 def countdown():
     try:
@@ -81,11 +79,82 @@ def countdown():
         timer = int(timeamount)
     except Exception:
         timer = 0
+
     while timer > 0:
         timer -= 1
         print(timer)
         pg.time.wait(1000)
 
+# -------------------------
+# Start Menu
+# -------------------------
+class StartMenu:
+    def __init__(self):
+        self.screen = pg.display.set_mode(SCREEN_SIZE)
+        pg.display.set_caption("Pixel Serpent - Menu")
+        self.clock = pg.time.Clock()
+        self.buttons = []
+        self.create_buttons()
+
+    def create_buttons(self):
+        self.buttons = [
+            (pg.Rect(150,300,100,50), "Start", self.start_game),
+            (pg.Rect(550,300,100,50), "Exit", self.exit_game)
+        ]
+
+    def start_game(self):
+        start_game(moves_per_second=6, size=1)
+
+    def exit_game(self):
+        pg.quit(); sys.exit()
+
+    def mainloop(self):
+        while True:
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    pg.quit(); sys.exit()
+
+            self.screen.fill((35,38,117))
+
+            blit_text_outline(
+                self.screen, "PIXEL SERPENT", 80,
+                SCREEN_SIZE[0]//2, 150,
+                inside_color=(255,255,255),
+                outline_color=(0,0,0),
+                center=True
+            )
+
+            # Border
+            color = (0,0,0)
+            for x in range(0,800,10):
+                t = pg.Surface((10,10)); t.fill(color)
+                self.screen.blit(t,(x,0)); self.screen.blit(t,(x,440))
+            for y in range(0,450,10):
+                t = pg.Surface((10,10)); t.fill(color)
+                self.screen.blit(t,(0,y)); self.screen.blit(t,(790,y))
+
+            mouse = pg.mouse.get_pos()
+            clicked = pg.mouse.get_pressed()[0]
+
+            for rect, text, callback in self.buttons:
+                highlight = (0,200,0) if rect.collidepoint(mouse) else (0,255,0)
+                pg.draw.rect(self.screen, highlight, rect, border_radius=8)
+
+                blit_text_outline(
+                    self.screen, text, 24,
+                    rect.centerx, rect.centery,
+                    inside_color=(0,0,0),
+                    outline_color=(255,255,255),
+                    center=True
+                )
+
+                if rect.collidepoint(mouse) and clicked:
+                    pg.time.wait(150)
+                    callback()
+                    return
+
+            pg.display.update()
+            self.clock.tick(30)
 # -------------------------
 # Snake and Apple (tile-based movement)
 # -------------------------

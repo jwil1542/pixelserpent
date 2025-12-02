@@ -1,5 +1,8 @@
 import pygame as pg
 import sys,random
+
+FONT_FILE = "CookieCrisp-L36ly.ttf"
+
 def collide(x1,y1,x2,y2,x3,y3,x4,y4):
     if (x3+x4) > x1 > x3 and (y3+y4) > y1 > y3 or (x3+x4) > x2 >x3 and (y3+y4) > y2 > y3:
         return True
@@ -98,11 +101,11 @@ class game():
                     sys.exit()
             for x in self.blocks:
                 self.screen.blit(x[0],x[1])
-            txts = pg.font.SysFont('Courier New',50).render('YOU LOST    Score:',True,(255,255,255))
+            txts = pg.font.SysFont(FONT_FILE,50).render('YOU LOST    Score:',True,(255,255,255))
             txtrect = txts.get_rect()
             txtrect.topleft =(20,150)
             self.screen.blit(txts,txtrect)
-            txts = pg.font.SysFont('TIMESNEWROMAN',50).render(str(self.snake.score),True,(255,255,255))
+            txts = pg.font.SysFont(FONT_FILE,50).render(str(self.snake.score),True,(255,255,255))
             txtrect = txts.get_rect()
             txtrect.topleft =(600,150)
             self.screen.blit(txts,txtrect)
@@ -154,7 +157,7 @@ class game():
         rectangle.fill(color,special_flags=pg.BLEND_RGBA_MAX)
         rectangle.fill((255,200,255, alpha),special_flags=pg.BLEND_RGBA_MIN)   
         self.screen.blit(rectangle,pos)
-        txts = pg.font.SysFont('Courier New',textsize).render(text,True,(0,0,0))
+        txts = pg.font.Font(FONT_FILE,textsize).render(text,True,(0,0,0))
         txtrect = txts.get_rect()
         txtrect.center =(pos[0]+pos[2]/2), (pos[1]+pos[3]/2)
         self.screen.blit(txts,txtrect)
@@ -234,7 +237,7 @@ class startmenu():
             t.fill(color)
             self.blocks.append([t, [790,x]])
     def make_text(self, x, y, text, size=20, color = (0,0,0), a = False):
-        txts = pg.font.SysFont('Courier New', size).render(text, True, color)
+        txts = pg.font.Font(FONT_FILE, size).render(text, True, color)
         txtrect = txts.get_rect()
         txtrect.topleft = (x,y)
         if a == True:
@@ -282,7 +285,7 @@ class startmenu():
     def mainloop(self):
         while 1:
             self.screen.fill((35,38,117))
-            self.make_text(400, 150, 'WORM GAME', color = (255,255,255), size = 150, a = True)
+            self.make_text(400, 150, 'PIXEL SERPENT', color = (255,255,255), size = 150, a = True)
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     sys.exit()

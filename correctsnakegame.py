@@ -76,9 +76,13 @@ class game():
     def __init__(self,speed, size=1):
         self.screen = pg.display.set_mode((800,450))
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         self.background = pg.image.load("menu_background.jpg").convert()
         self.background = pg.transform.scale(self.background, (800, 450))
         pg.display.set_caption('Snake Game')
+=======
+        pg.display.set_caption('Pixel Serpent')
+>>>>>>> Stashed changes
 =======
         pg.display.set_caption('Pixel Serpent')
 >>>>>>> Stashed changes
@@ -298,8 +302,13 @@ class startmenu():
     def mainloop(self):
         while 1:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             self.screen.blit(self.background, (0,0))
             self.make_text(400, 150, 'PIXEL SERPENT', color = (255,255,255), size = 150, a = True)
+=======
+            self.screen.fill((255,189,210))
+            self.make_text(400, 150, 'PIXEL SERPENT', color = (46,20,5), size = 100, a = True)
+>>>>>>> Stashed changes
 =======
             self.screen.fill((255,189,210))
             self.make_text(400, 150, 'PIXEL SERPENT', color = (46,20,5), size = 100, a = True)

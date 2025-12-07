@@ -1,6 +1,13 @@
 import pygame as pg
 import sys,random
 
+pg.init()
+pg.mixer.init()
+pg.mixer.music.load("background music.wav")
+pg.mixer.music.set_volume(0.5)   # optional (0.0–1.0)
+pg.mixer.music.play(-1)          # -1 = loop forever
+
+
 FONT_FILE = "CookieCrisp-L36ly.ttf"
 
 def collide(x1,y1,x2,y2,x3,y3,x4,y4):
@@ -22,7 +29,7 @@ class snake():
     def __init__(self,speed, size):
         self.pos = [20,20]
         self.image = pg.Surface((10*size,10*size))
-        self.image.fill((0,255,0))
+        self.image.fill((114,214,129))
         self.speed = speed
         self.size = size
         self.images = []
@@ -64,13 +71,17 @@ class apple():
     def __init__(self,size):
         self.pos = [random.randrange(10, 780,10),random.randrange(10,430,10)]
         self.image = pg.Surface((10*size,10*size))
-        self.image.fill((255,0,0))
+        self.image.fill((245,51,51))
 class game():
     def __init__(self,speed, size=1):
         self.screen = pg.display.set_mode((800,450))
+<<<<<<< Updated upstream
         self.background = pg.image.load("menu_background.jpg").convert()
         self.background = pg.transform.scale(self.background, (800, 450))
         pg.display.set_caption('Snake Game')
+=======
+        pg.display.set_caption('Pixel Serpent')
+>>>>>>> Stashed changes
         self.snake = snake(speed, size)
         self.blocks = []
         self.score = 0
@@ -148,7 +159,7 @@ class game():
         if (pos[0]+pos[2]) > mouse[0] > pos[0] and (pos[1]+pos[3]) > mouse[1] > pos[1]:
             self.hover = True
             self.buttonclick = action
-            color = pg.Color(*color[3])
+            color = pg.Color(*color[1])
             alpha = color.a
             color.a = 0
         else:
@@ -157,7 +168,7 @@ class game():
             color.a = 0
             self.hover = False
         rectangle.fill(color,special_flags=pg.BLEND_RGBA_MAX)
-        rectangle.fill((255,200,255, alpha),special_flags=pg.BLEND_RGBA_MIN)   
+        rectangle.fill((255,244,184, alpha),special_flags=pg.BLEND_RGBA_MIN)   
         self.screen.blit(rectangle,pos)
         txts = pg.font.Font(FONT_FILE,textsize).render(text,True,(0,0,0))
         txtrect = txts.get_rect()
@@ -168,7 +179,7 @@ class game():
     def loop(self):
         self.game_over = False
         while self.game_over != True:
-            self.screen.fill((35,38,117))
+            self.screen.fill((243, 245, 184))
             self.snake.update()
             for x in self.blocks:
                 if self.snake.check_collisions(x[1]) == True:
@@ -286,8 +297,13 @@ class startmenu():
         self.make_text((pos[0]+pos[2]/2), (pos[1]+pos[3]/2), text, a = True, size=textsize)
     def mainloop(self):
         while 1:
+<<<<<<< Updated upstream
             self.screen.blit(self.background, (0,0))
             self.make_text(400, 150, 'PIXEL SERPENT', color = (255,255,255), size = 150, a = True)
+=======
+            self.screen.fill((255,189,210))
+            self.make_text(400, 150, 'PIXEL SERPENT', color = (46,20,5), size = 100, a = True)
+>>>>>>> Stashed changes
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     sys.exit()

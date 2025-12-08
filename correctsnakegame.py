@@ -77,6 +77,8 @@ class game():
         self.screen = pg.display.set_mode((800,450))
         self.background = pg.image.load("menu_background.jpg").convert()
         self.background = pg.transform.scale(self.background, (800, 450))
+        self.game_background = pg.image.load("snake_background.jpg").convert()
+        self.game_background = pg.transform.scale(self.game_background, (800, 450))
         pg.display.set_caption('Pixel Serpent')
         self.snake = snake(speed, size)
         self.blocks = []
@@ -175,7 +177,7 @@ class game():
     def loop(self):
         self.game_over = False
         while self.game_over != True:
-            self.screen.fill((243, 245, 184))
+            self.screen.blit(self.game_background, (0, 0))
             self.snake.update()
             for x in self.blocks:
                 if self.snake.check_collisions(x[1]) == True:

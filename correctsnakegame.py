@@ -302,8 +302,6 @@ class startmenu():
         self.make_text((pos[0]+pos[2]/2), (pos[1]+pos[3]/2), text, a = True, size=textsize)
     def mainloop(self):
         while 1:
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
             self.screen.blit(self.background, (0,0))
             self.make_text(400, 150, 'PIXEL SERPENT', color = (255,255,255), size = 150, a = True)
 

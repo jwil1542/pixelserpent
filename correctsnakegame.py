@@ -222,6 +222,15 @@ class game():
 class startmenu():
     def __init__(self):
         self.screen = pg.display.set_mode((800,450))
+                # load background image
+        try:
+            self.background = pg.image.load("menu_background.jpg").convert()
+            self.background = pg.transform.scale(self.background, (800, 450))
+        except Exception as e:
+            print("Background failed to load:", e)
+            # fallback color
+            self.background = None
+
         self.b1 = '(150, 300,100,50),"Start", [(0,255,0), (0,150,0)], action = self.start'
         self.b2 = '(550, 300,100,50),"Exit", [(255,0,0), (150,0,0)], action = self.exit'
         self.buttons = [self.b1, self.b2]
@@ -293,6 +302,8 @@ class startmenu():
         self.make_text((pos[0]+pos[2]/2), (pos[1]+pos[3]/2), text, a = True, size=textsize)
     def mainloop(self):
         while 1:
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
             self.screen.blit(self.background, (0,0))
             self.make_text(400, 150, 'PIXEL SERPENT', color = (255,255,255), size = 150, a = True)
 

@@ -110,7 +110,7 @@ class game():
                     sys.exit()
             for x in self.blocks:
                 self.screen.blit(x[0],x[1])
-            txts = pg.font.SysFont(FONT_FILE,50).render('YOU LOST    Score:',True,(255,255,255))
+            txts = pg.font.SysFont(FONT_FILE,50).render('YOU LOST!    Score:',True,(173,255,153))
             txtrect = txts.get_rect()
             txtrect.topleft =(20,150)
             self.screen.blit(txts,txtrect)
@@ -119,7 +119,7 @@ class game():
             txtrect.topleft =(600,150)
             self.screen.blit(txts,txtrect)
             pg.display.update()
-            self.make_button((255,300,100,50),'Start Over', [(255,255,255),(150,150,150)], action = lambda:restart())
+            self.make_button((255,300,100,50),'Start Over?', [(173,255,153),(150,150,150)], action = lambda:restart())
             if self.hover ==True:
                 click = pg.mouse.get_pressed()
                 if click[0] == 1:
@@ -231,8 +231,8 @@ class startmenu():
             # fallback color
             self.background = None
 
-        self.b1 = '(150, 300,100,50),"Start", [(0,255,0), (0,150,0)], action = self.start'
-        self.b2 = '(550, 300,100,50),"Exit", [(255,0,0), (150,0,0)], action = self.exit'
+        self.b1 = '(150, 300,100,50),"Start", [(173,255,153), (0,150,0)], action = self.start'
+        self.b2 = '(550, 300,100,50),"Exit", [(173,255,153), (150,0,0)], action = self.exit'
         self.buttons = [self.b1, self.b2]
         self.blocks = []
         self.size = 1
@@ -303,7 +303,7 @@ class startmenu():
     def mainloop(self):
         while 1:
             self.screen.blit(self.background, (0,0))
-            self.make_text(400, 150, 'PIXEL SERPENT', color = (255,255,255), size = 150, a = True)
+            self.make_text(400, 150, 'pixel serpent', color = (39,21,69), size = 100, a = True)
 
             for event in pg.event.get():
                 if event.type == pg.QUIT:
@@ -322,21 +322,21 @@ class startmenu():
                             self.click0 = False
             pg.display.update()
     def start(self):
-        self.b1 = '(150, 300,100,50),"Normal", [(0,255,0), (0,150,0)], action = self.start3'
-        self.b2 = '(550, 300,100,50),"Big", [(0,255,0), (0,150,0)], action = self.start4'
+        self.b1 = '(150, 300,100,50),"Normal", [(173,255,153), (0,150,0)], action = self.start3'
+        self.b2 = '(550, 300,100,50),"Big", [(173,255,153), (0,150,0)], action = self.start4'
         self.buttons = [self.b1,self.b2]
     def start3(self):
-        self.b1 = '(150, 300,100,50),"Easy", [(0,255,0), (0,150,0)], action = self.e'
-        self.b2 = '(283, 300,100,50),"Normal", [(0,255,0), (0,150,0)], self.n'
-        self.b3 = '(417, 300,100,50),"Hard", [(0,255,0), (0,150,0)], action = self.h'
-        self.b4 = '(550, 300,100,50),"Expert", [(0,255,0), (0,150,0)], action = self.ex'
+        self.b1 = '(150, 300,100,50),"Easy", [(173,255,153), (0,150,0)], action = self.e'
+        self.b2 = '(283, 300,100,50),"Normal", [(173,255,153), (0,150,0)], self.n'
+        self.b3 = '(417, 300,100,50),"Hard", [(173,255,153), (0,150,0)], action = self.h'
+        self.b4 = '(550, 300,100,50),"Expert", [(173,255,153), (0,150,0)], action = self.ex'
         self.buttons = [self.b1, self.b2,self.b3,self.b4]
     def start4(self):
         self.size = 2
-        self.b1 = '(150, 300,100,50),"Easy", [(0,255,0), (0,150,0)], action = self.e'
-        self.b2 = '(283, 300,100,50),"Normal", [(0,255,0), (0,150,0)], self.n'
-        self.b3 = '(417, 300,100,50),"Hard", [(0,255,0), (0,150,0)], action = self.h'
-        self.b4 = '(550, 300,100,50),"Expert", [(0,255,0), (0,150,0)], action = self.ex'
+        self.b1 = '(150, 300,100,50),"Easy", [(173,255,153), (0,150,0)], action = self.e'
+        self.b2 = '(283, 300,100,50),"Normal", [(173,255,153), (0,150,0)], self.n'
+        self.b3 = '(417, 300,100,50),"Hard", [(173,255,153), (0,150,0)], action = self.h'
+        self.b4 = '(550, 300,100,50),"Expert", [(173,255,153), (0,150,0)], action = self.ex'
         self.buttons = [self.b1, self.b2,self.b3,self.b4]
     def e(self):
         start(0.25, self.size)
